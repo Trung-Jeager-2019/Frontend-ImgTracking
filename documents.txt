@@ -1,0 +1,21 @@
+1. Cài đặt Python 3.6.8
+    -  Vào link https://www.python.org/downloads/release/python-368/
+    -  Kéo xuống chọn: Windows x86-64 executable installer
+    -  Rồi cài đặt theo hướng dẫn
+    -  Mở cmd - Kiểm tra phiên bản: "python --version"
+    -  Chuyển đổi phiên bản 2 thành 3: "alias python=python3"
+2. Cài đặt pip:
+    -  Mở cmd: --> "curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py"
+    -  Chạy lệnh: --> "python get-pip.py"
+    -  Kiểm tra phiên bản: --> "pip --version"
+    -  Nâng cấp phiên bản pip: --> "python -m pip install --upgrade pip"
+3. Cài đặt môi trường ảo:
+    -  Mở cmd: --> "pip install virtualenv"
+4. Clone Fronend-ImgTracking:
+    -  "git clone https://github.com/Trung-Jeager-2019/Frontend-ImgTracking.git"
+    -  Mở thư mục bằng Visual Code --> Mở terminal
+    -  >>>  pip install virtualenv
+    -  >>>  .\pip_env\Scripts\activate
+    -  >>>  pip install django
+    -  >>>  pip install requirements.txt
+    -  >>>  python .\manage.py runsslserver 0.0.0.0:9000
