@@ -1,0 +1,34 @@
+{% extends 'base.html'%}
+{% block style %}
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+{% endblock %}
+{% block content %}
+<body>
+    <div class="container">
+        <div class="row">
+        <div class="col-sm-8 col-sm-offset-2" style="margin-top: 50px;">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Ar.js</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form action="{% url 'result' %}" method="post">
+                            {% csrf_token %}
+                            <select class="form-control course selectFilter" id="name_video" required="" name="NAME_VIDEO">
+                                <option>-- Chọn video --</option>
+                                {% for name_video in name_all_videos %}
+                                    <option value="{{ name_video }}">{{ name_video }}</option>
+                                {% endfor %}
+                            </select>
+                            </br>
+                            <input class="btn btn-danger" type="submit" class="btn" value="Tiếp tục">
+                            <a style="font-weight: bold; margin-left: 0.5em;" class="btn btn-danger" href="{% url 'upload_video' %}" role="button">Tải video lên</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock%}

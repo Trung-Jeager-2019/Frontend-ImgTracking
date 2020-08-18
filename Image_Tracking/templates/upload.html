@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+
+{% block style %}
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+{% endblock %}
+
+{% block content %}
+<body>
+    <div class="container">
+        <div class="row">
+        <div class="col-sm-8 col-sm-offset-2" style="margin-top: 50px;">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Ar.js</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form action="http://192.168.69.108:3000/upload/{{type}}" method="POST" enctype="multipart/form-data">
+                            <legend>Tải lên {{name_page}}</legend>
+                            <div class="form-group">
+                                <label for="">File</label>
+                                <input type="file" class="form-control" name="files" accept="{{type}}/*">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock%}

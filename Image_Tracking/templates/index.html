@@ -1,0 +1,36 @@
+{% extends 'base.html'%}
+
+{% block style %}
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+{% endblock %}
+
+{% block content %}
+<body>
+    <div class="container">
+        <div class="row">
+        <div class="col-sm-8 col-sm-offset-2" style="margin-top: 50px;">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Ar.js</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form action="{% url 'result' %}" method="post">
+                            {% csrf_token %}
+                            <select class="form-control course selectFilter" id="Name_image" required="" name="NAME_IMAGE">
+                                <option>-- Chọn ảnh --</option>
+                                {% for name_image in name_all_images %}
+                                    <option value="{{ name_image }}">{{ name_image }}</option>
+                                {% endfor %}
+                            </select>
+                            </br>
+                            <input class="btn btn-danger" type="submit" class="btn" value="Chọn ảnh">
+                            <a style="font-weight: bold; margin-left: 0.5em;" class="btn btn-danger" href="{% url 'upload_image' %}" role="button">Tải ảnh lên</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock%}
