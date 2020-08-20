@@ -3,9 +3,10 @@ import urllib.request
 import requests
 import os
 import json
-ip = "192.168.69.108"
+
+ip = "192.168.0.134"
 # Create your views here.
-output_dir_image = './static'
+output_dir_image = './static/images'
 output_dir_video = './static/videos'
 
 def download_file_from_api(output_dir, data_url):
@@ -17,7 +18,6 @@ def download_file_from_api(output_dir, data_url):
     # Download file from url
     urllib.request.urlretrieve(data_url, save_path)
     print(save_path)
-
 
 def processing(link_name, name_image):
     with urllib.request.urlopen(link_name) as url:
@@ -40,6 +40,7 @@ def processing(link_name, name_image):
                 # print(file_dic['id'])
                 # print(file_dic['n_image'])
                 # print(file_dic['l_image'])
+                print(file_dic['l_nft'])
                 return file_dic['l_nft']
 
 def processing_file(link_name):
@@ -100,6 +101,9 @@ def processing_video(link_name, name_video):
             if file_dic['n_video'] == name_video:
                 return file_dic['l_video']
 
+def processing_file_video(list_):
+    return ""
+
 def index(request):
     name_type = 'n_image'
     name_all_images = processing_one_type("http://" + ip + ":3000/getcontent/imgasset", name_type)
@@ -112,7 +116,8 @@ def index(request):
 def upload_image(request):
     context = {
         'name_page':'hình ảnh',
-        'type':'image'
+        'type':'image',
+        'ip_host':ip
     }
     return render(request, 'upload.html', context=context)
 
@@ -128,7 +133,8 @@ def select_video(request):
 def upload_video(request):
     context = {
         'name_page':'video',
-        'type':'video'
+        'type':'video',
+        'ip_host':ip
     }
     return render(request, 'upload.html', context=context) 
 
@@ -139,13 +145,13 @@ def result(request):
     print(name_image.split('.')[0])
 
     # name_video = request.POST['NAME_VIDEO']
-    name_video = '5540148773739827724.mp4'
+    name_video = 'videodemo.mp4'
     video = processing_video("http://" + ip + ":3000/getcontent/videoasset", name_video)
     download_file_from_api(output_dir_video, video)
     print(name_video.split('.')[0])
 
     context = {
         'name_file_image': name_image.split('.')[0],
-        'name_file_video': name_video
+        # 'name_file_video': name_video
     }
     return render(request, 'result.html', context=context)

@@ -3,22 +3,20 @@
 
 {% block content %}
     <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
-
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <!-- <script src="../test.js"></script> -->
     <script>
     window.onload = function() {
         AFRAME.registerComponent("videohandler", {
         init: function() {
             var marker = this.el;
             this.vid = document.querySelector("#vid");
-
             marker.addEventListener(
             "markerFound",
             function() {
                 this.vid.play();
             }.bind(this)
             );
-
             marker.addEventListener(
             "markerLost",
             function() {
@@ -30,7 +28,6 @@
         });
     };
     </script>
-
     <style>
     .arjs-loader {
         height: 100%;
@@ -44,17 +41,15 @@
         justify-content: center;
         align-items: center;
     }
-
     .arjs-loader div {
         text-align: center;
         font-size: 1.25em;
         color: white;
     }
     </style>
-
     <body style="margin : 0px; overflow: hidden;">
     <div class="arjs-loader">
-        <div>Loading, please wait...</div>
+        <div>Loading, please wait..</div>
     </div>
     <a-scene
         vr-mode-ui="enabled: false;"
@@ -64,7 +59,7 @@
     >
         <a-assets>
         <video
-            src="https://cdn.glitch.com/6d5eb739-2c02-45cf-8a76-34efbcf3e78d%2FIntro%20Khoa%20Công%20Nghệ%20Thông%20Tin%2C%20Robot%20và%20Trí%20Tuệ%20Nhân%20Tạo%20(FIRA).mp4?v=1597903789361&fbclid=IwAR12rfdfXiRqfS50ZOPp-rDiQpnPIMCWEOXYjjBu4D6QvVu5q1pXPwpus5E"
+            src="https://cdn.glitch.com/6d5eb739-2c02-45cf-8a76-34efbcf3e78d%2Fmov_bbb.mp4?v=1595487618197"
             preload="auto"
             id="vid"
             response-type="arraybuffer"
@@ -76,11 +71,11 @@
             playsinline
         ></video>
         </a-assets>
-
         <a-nft
         videohandler
         type="nft"
-        url="./static/images/{{name_file_image}}"
+        url="./static/images/ttnt"
+        {% comment %} url="./static/images/{{name_file_image}}" {% endcomment %}
         {% comment %} url="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/thangtranit1999/fira-ar.js/master/img-ar.js/ttntweb" {% endcomment %}
         smooth="true"
         smoothcount="10"
@@ -88,10 +83,11 @@
         smooththreshold="5"
         >
     <!--       <a-video src="#vid" rotation="-90 0 0" position="50 150 -100" width="30" height="17.5"> -->
-        <a-video src="#vid" rotation="-90 0 0" position="200 100 -150" width="450" height="225">
+        <a-video src="#vid" rotation="-90 0 0" position="10 100 -150" width="150" height="85">
         </a-video>
         </a-nft>
         <a-entity camera></a-entity>
     </a-scene>
     </body>
+    <!-- url="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/thangtranit1999/fira-ar.js/master/img-ar.js/a" -->
 {% endblock %}
